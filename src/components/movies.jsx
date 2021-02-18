@@ -113,6 +113,7 @@ class Movies extends Component {
 	render() {
 		const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
 		const { totalCount, data: movies } = this.getPageData();
+		const { user } = this.props;
 
 		return (
 			<div className='row'>
@@ -124,9 +125,14 @@ class Movies extends Component {
 					/>
 				</div>
 				<div className='col'>
-					<Link to='/movies/new' className='col-3 btn btn-primary'>
-						New Movie
-					</Link>
+					{user && (
+						<Link
+							to='/movies/new'
+							className='col-3 btn btn-primary'
+						>
+							New Movie
+						</Link>
+					)}
 					<p
 						type='button'
 						className='btn btn-success m-2'
